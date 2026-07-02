@@ -1,0 +1,688 @@
+<!DOCTYPE html><html lang="en" dir="ltr" data-theme="dark" data-has-toc data-has-sidebar class="astro-lv6ema5g"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><title>Diagnostics | Oval</title><link rel="canonical" href="https://ov-al.github.io/reference/diagnostics/"/><link rel="sitemap" href="/sitemap-index.xml"/><link rel="shortcut icon" href="/favicon.svg" type="image/svg+xml"/><meta name="generator" content="Astro v7.0.3"/><meta name="generator" content="Starlight v0.41.1"/><meta property="og:title" content="Diagnostics"/><meta property="og:type" content="article"/><meta property="og:url" content="https://ov-al.github.io/reference/diagnostics/"/><meta property="og:locale" content="en"/><meta property="og:description" content="The analyzer diagnostics Oval reports, with a one-line fix for each."/><meta property="og:site_name" content="Oval"/><meta name="twitter:card" content="summary_large_image"/><meta name="description" content="The analyzer diagnostics Oval reports, with a one-line fix for each."/><script>
+	window.StarlightThemeProvider = (() => {
+		const storedTheme =
+			typeof localStorage !== 'undefined' && localStorage.getItem('starlight-theme');
+		const theme =
+			storedTheme ||
+			(window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
+		document.documentElement.dataset.theme = theme === 'light' ? 'light' : 'dark';
+		return {
+			updatePickers(theme = storedTheme || 'auto') {
+				document.querySelectorAll('starlight-theme-select').forEach((picker) => {
+					const select = picker.querySelector('select');
+					if (select) select.value = theme;
+					/** @type {HTMLTemplateElement | null} */
+					const tmpl = document.querySelector(`#theme-icons`);
+					const newIcon = tmpl && tmpl.content.querySelector('.' + theme);
+					if (newIcon) {
+						const oldIcon = picker.querySelector('svg.label-icon');
+						if (oldIcon) {
+							oldIcon.replaceChildren(...newIcon.cloneNode(true).childNodes);
+						}
+					}
+				});
+			},
+		};
+	})();
+</script><template id="theme-icons"><svg aria-hidden="true" class="light astro-al3brprd" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M5 12a1 1 0 0 0-1-1H3a1 1 0 0 0 0 2h1a1 1 0 0 0 1-1Zm.64 5-.71.71a1 1 0 0 0 0 1.41 1 1 0 0 0 1.41 0l.71-.71A1 1 0 0 0 5.64 17ZM12 5a1 1 0 0 0 1-1V3a1 1 0 0 0-2 0v1a1 1 0 0 0 1 1Zm5.66 2.34a1 1 0 0 0 .7-.29l.71-.71a1 1 0 1 0-1.41-1.41l-.66.71a1 1 0 0 0 0 1.41 1 1 0 0 0 .66.29Zm-12-.29a1 1 0 0 0 1.41 0 1 1 0 0 0 0-1.41l-.71-.71a1.004 1.004 0 1 0-1.43 1.41l.73.71ZM21 11h-1a1 1 0 0 0 0 2h1a1 1 0 0 0 0-2Zm-2.64 6A1 1 0 0 0 17 18.36l.71.71a1 1 0 0 0 1.41 0 1 1 0 0 0 0-1.41l-.76-.66ZM12 6.5a5.5 5.5 0 1 0 5.5 5.5A5.51 5.51 0 0 0 12 6.5Zm0 9a3.5 3.5 0 1 1 0-7 3.5 3.5 0 0 1 0 7Zm0 3.5a1 1 0 0 0-1 1v1a1 1 0 0 0 2 0v-1a1 1 0 0 0-1-1Z"/></svg><svg aria-hidden="true" class="dark astro-al3brprd" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M21.64 13a1 1 0 0 0-1.05-.14 8.049 8.049 0 0 1-3.37.73 8.15 8.15 0 0 1-8.14-8.1 8.59 8.59 0 0 1 .25-2A1 1 0 0 0 8 2.36a10.14 10.14 0 1 0 14 11.69 1 1 0 0 0-.36-1.05Zm-9.5 6.69A8.14 8.14 0 0 1 7.08 5.22v.27a10.15 10.15 0 0 0 10.14 10.14 9.784 9.784 0 0 0 2.1-.22 8.11 8.11 0 0 1-7.18 4.32v-.04Z"/></svg><svg aria-hidden="true" class="auto astro-al3brprd" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M21 14h-1V7a3 3 0 0 0-3-3H7a3 3 0 0 0-3 3v7H3a1 1 0 0 0-1 1v2a3 3 0 0 0 3 3h14a3 3 0 0 0 3-3v-2a1 1 0 0 0-1-1ZM6 7a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v7H6V7Zm14 10a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-1h16v1Z"/></svg></template><link rel="stylesheet" href="/_astro/print.ehPL0gv-.css" media="print"><link rel="stylesheet" href="/_astro/common.DIcKO0Nw.css"><script type="module" src="/_astro/page.169VI7mI.js"></script></head><body class="astro-lv6ema5g"><a href="#_top" class="astro-wfemlurs">Skip to content</a><div class="page sl-flex astro-orllyodm"><header class="header astro-orllyodm"><div class="header astro-2geza4bf"><div class="title-wrapper sl-flex astro-2geza4bf"><a href="/" class="site-title sl-flex astro-p2mfr3s4"><span class="astro-p2mfr3s4" translate="no">Oval</span></a></div><div class="sl-flex print:hidden astro-2geza4bf"><site-search class="astro-2geza4bf astro-y3a4bb4w" data-translations="{&quot;placeholder&quot;:&quot;Search&quot;}"><button data-open-modal disabled aria-label="Search" aria-keyshortcuts="Control+K" class="astro-y3a4bb4w"><svg aria-hidden="true" class="astro-y3a4bb4w astro-al3brprd" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M21.71 20.29 18 16.61A9 9 0 1 0 16.61 18l3.68 3.68a.999.999 0 0 0 1.42 0 1 1 0 0 0 0-1.39ZM11 18a7 7 0 1 1 0-14 7 7 0 0 1 0 14Z"/></svg><span class="sl-hidden md:sl-block astro-y3a4bb4w" aria-hidden="true">Search</span><kbd class="sl-hidden md:sl-flex astro-y3a4bb4w" style="display: none;"><kbd class="astro-y3a4bb4w">Ctrl</kbd><kbd class="astro-y3a4bb4w">K</kbd></kbd></button><dialog style="padding:0" aria-label="Search" class="astro-y3a4bb4w"><div class="dialog-frame sl-flex astro-y3a4bb4w"><button data-close-modal class="sl-flex md:sl-hidden astro-y3a4bb4w">Cancel</button><div class="search-container astro-y3a4bb4w"><div id="starlight__search" class="astro-y3a4bb4w"></div></div></div></dialog></site-search><script>
+	(() => {
+		const openBtn = document.querySelector('button[data-open-modal]');
+		const shortcut = openBtn?.querySelector('kbd');
+		if (!openBtn || !(shortcut instanceof HTMLElement)) return;
+		const platformKey = shortcut.querySelector('kbd');
+		if (platformKey && /(Mac|iPhone|iPod|iPad)/i.test(navigator.platform)) {
+			platformKey.textContent = '⌘';
+			openBtn.setAttribute('aria-keyshortcuts', 'Meta+K');
+		}
+		shortcut.style.display = '';
+	})();
+</script><script type="module" src="/_astro/Search.astro_astro_type_script_index_0_lang.BhbZRdaS.js"></script></div><div class="sl-hidden md:sl-flex print:hidden right-group astro-2geza4bf"><div class="sl-flex social-icons astro-2geza4bf"><a href="https://github.com/OV-AL/oval" rel="me" class="sl-flex astro-loubsn6f"><span class="sr-only astro-loubsn6f">GitHub</span><svg aria-hidden="true" class="astro-loubsn6f astro-al3brprd" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M12 .3a12 12 0 0 0-3.8 23.38c.6.12.83-.26.83-.57L9 21.07c-3.34.72-4.04-1.61-4.04-1.61-.55-1.39-1.34-1.76-1.34-1.76-1.08-.74.09-.73.09-.73 1.2.09 1.83 1.24 1.83 1.24 1.08 1.83 2.81 1.3 3.5 1 .1-.78.42-1.31.76-1.61-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.14-.3-.54-1.52.1-3.18 0 0 1-.32 3.3 1.23a11.5 11.5 0 0 1 6 0c2.28-1.55 3.29-1.23 3.29-1.23.64 1.66.24 2.88.12 3.18a4.65 4.65 0 0 1 1.23 3.22c0 4.61-2.8 5.63-5.48 5.92.42.36.81 1.1.81 2.22l-.01 3.29c0 .31.2.69.82.57A12 12 0 0 0 12 .3Z"/></svg></a></div><starlight-theme-select><label style="--sl-select-width: 6.25em" class="astro-huvidtzr"><span class="sr-only astro-huvidtzr">Select theme</span><svg aria-hidden="true" class="icon label-icon astro-huvidtzr astro-al3brprd" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M21 14h-1V7a3 3 0 0 0-3-3H7a3 3 0 0 0-3 3v7H3a1 1 0 0 0-1 1v2a3 3 0 0 0 3 3h14a3 3 0 0 0 3-3v-2a1 1 0 0 0-1-1ZM6 7a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v7H6V7Zm14 10a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-1h16v1Z"/></svg><select autocomplete="off" class="astro-huvidtzr"><option value="dark" class="astro-huvidtzr">Dark</option><option value="light" class="astro-huvidtzr">Light</option><option value="auto" selected class="astro-huvidtzr">Auto</option></select><svg aria-hidden="true" class="icon caret astro-huvidtzr astro-al3brprd" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M17 9.17a1 1 0 0 0-1.41 0L12 12.71 8.46 9.17a1 1 0 1 0-1.41 1.42l4.24 4.24a1.002 1.002 0 0 0 1.42 0L17 10.59a1.002 1.002 0 0 0 0-1.42Z"/></svg></label></starlight-theme-select><script>
+	StarlightThemeProvider.updatePickers();
+</script><script type="module">var e=`starlight-theme`,t=e=>e===`auto`||e===`dark`||e===`light`?e:`auto`,n=()=>t(typeof localStorage<`u`&&localStorage.getItem(e));function r(t){typeof localStorage<`u`&&localStorage.setItem(e,t===`light`||t===`dark`?t:``)}var i=()=>matchMedia(`(prefers-color-scheme: light)`).matches?`light`:`dark`;function a(e){StarlightThemeProvider.updatePickers(e),document.documentElement.dataset.theme=e===`auto`?i():e,r(e)}matchMedia(`(prefers-color-scheme: light)`).addEventListener(`change`,()=>{n()===`auto`&&a(`auto`)});var o=class extends HTMLElement{constructor(){super(),a(n()),this.querySelector(`select`)?.addEventListener(`change`,e=>{e.currentTarget instanceof HTMLSelectElement&&a(t(e.currentTarget.value))})}};customElements.define(`starlight-theme-select`,o);</script><script type="module">var e=class extends HTMLElement{constructor(){super();let e=this.querySelector(`select`);e&&(e.addEventListener(`change`,e=>{e.currentTarget instanceof HTMLSelectElement&&(window.location.pathname=e.currentTarget.value)}),window.addEventListener(`pageshow`,t=>{if(!t.persisted)return;let n=e.querySelector(`option[selected]`)?.index;n!==e.selectedIndex&&(e.selectedIndex=n??0)}))}};customElements.define(`starlight-lang-select`,e);</script></div></div></header><nav class="sidebar print:hidden astro-orllyodm" aria-label="Main"><starlight-menu-button class="print:hidden astro-kii3bznf"><button aria-expanded="false" aria-label="Menu" aria-controls="starlight__sidebar" class="sl-flex md:sl-hidden astro-kii3bznf"><svg aria-hidden="true" class="open-menu astro-kii3bznf astro-al3brprd" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M3 8h18a1 1 0 1 0 0-2H3a1 1 0 0 0 0 2Zm18 8H3a1 1 0 0 0 0 2h18a1 1 0 0 0 0-2Zm0-5H3a1 1 0 0 0 0 2h18a1 1 0 0 0 0-2Z"/></svg><svg aria-hidden="true" class="close-menu astro-kii3bznf astro-al3brprd" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="m13.41 12 6.3-6.29a1.004 1.004 0 1 0-1.42-1.42L12 10.59l-6.29-6.3a1.004 1.004 0 0 0-1.42 1.42l6.3 6.29-6.3 6.29a1 1 0 0 0 0 1.42.998.998 0 0 0 1.42 0l6.29-6.3 6.29 6.3a.999.999 0 0 0 1.42 0 1 1 0 0 0 0-1.42L13.41 12Z"/></svg></button></starlight-menu-button><script type="module">var e=class extends HTMLElement{btn=this.querySelector(`button`);constructor(){super(),this.btn.addEventListener(`click`,()=>this.toggleExpanded());let e=this.closest(`nav`);e&&e.addEventListener(`keyup`,e=>this.closeOnEscape(e))}setExpanded(e){this.setAttribute(`aria-expanded`,String(e)),document.body.toggleAttribute(`data-mobile-menu-expanded`,e)}toggleExpanded(){this.setExpanded(this.getAttribute(`aria-expanded`)!==`true`)}closeOnEscape(e){e.code===`Escape`&&(this.setExpanded(!1),this.btn.focus())}};customElements.define(`starlight-menu-button`,e);</script><div id="starlight__sidebar" class="sidebar-pane astro-orllyodm"><div class="sidebar-content sl-flex astro-orllyodm"><sl-sidebar-state-persist data-hash="1mwpy8e" class="astro-2efw45ub"><script aria-hidden="true">
+		(() => {
+			try {
+				if (!matchMedia('(min-width: 50em)').matches) return;
+				/** @type {HTMLElement | null} */
+				const target = document.querySelector('sl-sidebar-state-persist');
+				const state = JSON.parse(sessionStorage.getItem('sl-sidebar-state') || '0');
+				if (!target || !state || target.dataset.hash !== state.hash) return;
+				window._starlightScrollRestore = state.scroll;
+				customElements.define(
+					'sl-sidebar-restore',
+					class SidebarRestore extends HTMLElement {
+						connectedCallback() {
+							try {
+								const idx = parseInt(this.dataset.index || '');
+								const details = this.closest('details');
+								if (details && typeof state.open[idx] === 'boolean') details.open = state.open[idx];
+							} catch {}
+						}
+					}
+				);
+			} catch {}
+		})();
+	</script><ul class="top-level astro-dd74teu6"><li class="astro-dd74teu6"><details open class="astro-dd74teu6"><summary class="astro-dd74teu6"><span class="group-label astro-dd74teu6"><span class="large astro-dd74teu6">Get started</span></span><svg aria-hidden="true" class="caret astro-dd74teu6 astro-al3brprd" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.25rem;"><path d="m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z"/></svg></summary><sl-sidebar-restore data-index="0"></sl-sidebar-restore><ul class="astro-dd74teu6"><li class="astro-dd74teu6"><a href="/start/" class="astro-dd74teu6"><span class="astro-dd74teu6">Get started</span></a></li></ul></details></li><li class="astro-dd74teu6"><details open class="astro-dd74teu6"><summary class="astro-dd74teu6"><span class="group-label astro-dd74teu6"><span class="large astro-dd74teu6">Concepts</span></span><svg aria-hidden="true" class="caret astro-dd74teu6 astro-al3brprd" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.25rem;"><path d="m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z"/></svg></summary><sl-sidebar-restore data-index="1"></sl-sidebar-restore><ul class="astro-dd74teu6"><li class="astro-dd74teu6"><a href="/concepts/" class="astro-dd74teu6"><span class="astro-dd74teu6">Overview</span></a></li><li class="astro-dd74teu6"><a href="/concepts/bounded-contexts/" class="astro-dd74teu6"><span class="astro-dd74teu6">Bounded contexts</span></a></li><li class="astro-dd74teu6"><a href="/concepts/effects/" class="astro-dd74teu6"><span class="astro-dd74teu6">Effects &amp; composition</span></a></li><li class="astro-dd74teu6"><a href="/concepts/modules-and-platforms/" class="astro-dd74teu6"><span class="astro-dd74teu6">Modules &amp; platforms</span></a></li></ul></details></li><li class="astro-dd74teu6"><details open class="astro-dd74teu6"><summary class="astro-dd74teu6"><span class="group-label astro-dd74teu6"><span class="large astro-dd74teu6">Core</span></span><svg aria-hidden="true" class="caret astro-dd74teu6 astro-al3brprd" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.25rem;"><path d="m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z"/></svg></summary><sl-sidebar-restore data-index="2"></sl-sidebar-restore><ul class="astro-dd74teu6"><li class="astro-dd74teu6"><a href="/core/" class="astro-dd74teu6"><span class="astro-dd74teu6">Overview</span></a></li><li class="astro-dd74teu6"><a href="/core/typed-ids/" class="astro-dd74teu6"><span class="astro-dd74teu6">Typed IDs</span></a></li><li class="astro-dd74teu6"><a href="/core/config/" class="astro-dd74teu6"><span class="astro-dd74teu6">Configuration &amp; secrets</span></a></li><li class="astro-dd74teu6"><a href="/core/clock/" class="astro-dd74teu6"><span class="astro-dd74teu6">Clock &amp; time</span></a></li><li class="astro-dd74teu6"><details class="astro-dd74teu6"><summary class="astro-dd74teu6"><span class="group-label astro-dd74teu6"><span class="large astro-dd74teu6">Dispatch</span></span><svg aria-hidden="true" class="caret astro-dd74teu6 astro-al3brprd" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.25rem;"><path d="m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z"/></svg></summary><sl-sidebar-restore data-index="3"></sl-sidebar-restore><ul class="astro-dd74teu6"><li class="astro-dd74teu6"><a href="/core/dispatch/" class="astro-dd74teu6"><span class="astro-dd74teu6">Overview</span></a></li><li class="astro-dd74teu6"><a href="/core/dispatch/validation/" class="astro-dd74teu6"><span class="astro-dd74teu6">Validation</span></a></li><li class="astro-dd74teu6"><a href="/core/dispatch/middleware/" class="astro-dd74teu6"><span class="astro-dd74teu6">Middleware &amp; the pipeline</span></a></li><li class="astro-dd74teu6"><a href="/core/dispatch/lifecycle-hooks/" class="astro-dd74teu6"><span class="astro-dd74teu6">Lifecycle hooks</span></a></li><li class="astro-dd74teu6"><a href="/core/dispatch/units-of-work/" class="astro-dd74teu6"><span class="astro-dd74teu6">Units of work &amp; auto-commit</span></a></li><li class="astro-dd74teu6"><a href="/core/dispatch/queries/" class="astro-dd74teu6"><span class="astro-dd74teu6">Queries &amp; pagination</span></a></li></ul></details></li><li class="astro-dd74teu6"><details class="astro-dd74teu6"><summary class="astro-dd74teu6"><span class="group-label astro-dd74teu6"><span class="large astro-dd74teu6">Authorization</span></span><svg aria-hidden="true" class="caret astro-dd74teu6 astro-al3brprd" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.25rem;"><path d="m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z"/></svg></summary><sl-sidebar-restore data-index="4"></sl-sidebar-restore><ul class="astro-dd74teu6"><li class="astro-dd74teu6"><a href="/core/authorization/" class="astro-dd74teu6"><span class="astro-dd74teu6">Overview</span></a></li><li class="astro-dd74teu6"><a href="/core/authorization/permissions-and-roles/" class="astro-dd74teu6"><span class="astro-dd74teu6">Permissions &amp; roles</span></a></li><li class="astro-dd74teu6"><a href="/core/authorization/decisions/" class="astro-dd74teu6"><span class="astro-dd74teu6">Decisions</span></a></li><li class="astro-dd74teu6"><a href="/core/authorization/policies/" class="astro-dd74teu6"><span class="astro-dd74teu6">Policies</span></a></li></ul></details></li><li class="astro-dd74teu6"><a href="/core/resilience/" class="astro-dd74teu6"><span class="astro-dd74teu6">Resilience</span></a></li><li class="astro-dd74teu6"><a href="/core/tenancy/" class="astro-dd74teu6"><span class="astro-dd74teu6">Multi-tenancy</span></a></li><li class="astro-dd74teu6"><a href="/core/migrations/" class="astro-dd74teu6"><span class="astro-dd74teu6">Database migrations</span></a></li><li class="astro-dd74teu6"><a href="/core/observability/" class="astro-dd74teu6"><span class="astro-dd74teu6">Observability</span></a></li><li class="astro-dd74teu6"><details class="astro-dd74teu6"><summary class="astro-dd74teu6"><span class="group-label astro-dd74teu6"><span class="large astro-dd74teu6">Testing</span></span><svg aria-hidden="true" class="caret astro-dd74teu6 astro-al3brprd" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.25rem;"><path d="m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z"/></svg></summary><sl-sidebar-restore data-index="5"></sl-sidebar-restore><ul class="astro-dd74teu6"><li class="astro-dd74teu6"><a href="/core/testing/" class="astro-dd74teu6"><span class="astro-dd74teu6">Overview</span></a></li><li class="astro-dd74teu6"><a href="/core/testing/asserting-results/" class="astro-dd74teu6"><span class="astro-dd74teu6">Running &amp; asserting effects</span></a></li><li class="astro-dd74teu6"><a href="/core/testing/time-and-identity/" class="astro-dd74teu6"><span class="astro-dd74teu6">Time &amp; identity</span></a></li><li class="astro-dd74teu6"><a href="/core/testing/background-work/" class="astro-dd74teu6"><span class="astro-dd74teu6">Background work</span></a></li><li class="astro-dd74teu6"><a href="/core/testing/stubbing-dependencies/" class="astro-dd74teu6"><span class="astro-dd74teu6">Stubbing dependencies</span></a></li></ul></details></li></ul></details></li><li class="astro-dd74teu6"><details open class="astro-dd74teu6"><summary class="astro-dd74teu6"><span class="group-label astro-dd74teu6"><span class="large astro-dd74teu6">Modules</span></span><svg aria-hidden="true" class="caret astro-dd74teu6 astro-al3brprd" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.25rem;"><path d="m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z"/></svg></summary><sl-sidebar-restore data-index="6"></sl-sidebar-restore><ul class="astro-dd74teu6"><li class="astro-dd74teu6"><a href="/modules/cachestore/" class="astro-dd74teu6"><span class="astro-dd74teu6">CacheStore</span></a></li><li class="astro-dd74teu6"><a href="/modules/csv/" class="astro-dd74teu6"><span class="astro-dd74teu6">CSV</span></a></li><li class="astro-dd74teu6"><details class="astro-dd74teu6"><summary class="astro-dd74teu6"><span class="group-label astro-dd74teu6"><span class="large astro-dd74teu6">DataStore</span></span><svg aria-hidden="true" class="caret astro-dd74teu6 astro-al3brprd" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.25rem;"><path d="m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z"/></svg></summary><sl-sidebar-restore data-index="7"></sl-sidebar-restore><ul class="astro-dd74teu6"><li class="astro-dd74teu6"><a href="/modules/datastore/" class="astro-dd74teu6"><span class="astro-dd74teu6">Overview</span></a></li><li class="astro-dd74teu6"><a href="/modules/datastore/owned/" class="astro-dd74teu6"><span class="astro-dd74teu6">Ownership</span></a></li><li class="astro-dd74teu6"><a href="/modules/datastore/searchable/" class="astro-dd74teu6"><span class="astro-dd74teu6">Search</span></a></li><li class="astro-dd74teu6"><a href="/modules/datastore/lookups/" class="astro-dd74teu6"><span class="astro-dd74teu6">Lookups</span></a></li><li class="astro-dd74teu6"><a href="/modules/datastore/soft-delete/" class="astro-dd74teu6"><span class="astro-dd74teu6">Soft delete</span></a></li><li class="astro-dd74teu6"><a href="/modules/datastore/append-only/" class="astro-dd74teu6"><span class="astro-dd74teu6">Append-only</span></a></li><li class="astro-dd74teu6"><a href="/modules/datastore/leasing/" class="astro-dd74teu6"><span class="astro-dd74teu6">Leasing</span></a></li><li class="astro-dd74teu6"><a href="/modules/datastore/constraints/" class="astro-dd74teu6"><span class="astro-dd74teu6">Constraints</span></a></li></ul></details></li><li class="astro-dd74teu6"><a href="/modules/email/" class="astro-dd74teu6"><span class="astro-dd74teu6">Email</span></a></li><li class="astro-dd74teu6"><details class="astro-dd74teu6"><summary class="astro-dd74teu6"><span class="group-label astro-dd74teu6"><span class="large astro-dd74teu6">Events</span></span><svg aria-hidden="true" class="caret astro-dd74teu6 astro-al3brprd" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.25rem;"><path d="m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z"/></svg></summary><sl-sidebar-restore data-index="8"></sl-sidebar-restore><ul class="astro-dd74teu6"><li class="astro-dd74teu6"><a href="/modules/events/" class="astro-dd74teu6"><span class="astro-dd74teu6">Overview</span></a></li><li class="astro-dd74teu6"><a href="/modules/events/subscribing/" class="astro-dd74teu6"><span class="astro-dd74teu6">Subscribing</span></a></li><li class="astro-dd74teu6"><a href="/modules/events/delivery/" class="astro-dd74teu6"><span class="astro-dd74teu6">Delivery &amp; transports</span></a></li></ul></details></li><li class="astro-dd74teu6"><details class="astro-dd74teu6"><summary class="astro-dd74teu6"><span class="group-label astro-dd74teu6"><span class="large astro-dd74teu6">HttpClient</span></span><svg aria-hidden="true" class="caret astro-dd74teu6 astro-al3brprd" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.25rem;"><path d="m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z"/></svg></summary><sl-sidebar-restore data-index="9"></sl-sidebar-restore><ul class="astro-dd74teu6"><li class="astro-dd74teu6"><a href="/modules/httpclient/" class="astro-dd74teu6"><span class="astro-dd74teu6">Overview</span></a></li><li class="astro-dd74teu6"><a href="/modules/httpclient/requests/" class="astro-dd74teu6"><span class="astro-dd74teu6">Requests</span></a></li><li class="astro-dd74teu6"><a href="/modules/httpclient/authentication/" class="astro-dd74teu6"><span class="astro-dd74teu6">Authentication</span></a></li></ul></details></li><li class="astro-dd74teu6"><a href="/modules/ical/" class="astro-dd74teu6"><span class="astro-dd74teu6">iCal</span></a></li><li class="astro-dd74teu6"><a href="/modules/idempotency/" class="astro-dd74teu6"><span class="astro-dd74teu6">Idempotency</span></a></li><li class="astro-dd74teu6"><details class="astro-dd74teu6"><summary class="astro-dd74teu6"><span class="group-label astro-dd74teu6"><span class="large astro-dd74teu6">Identity</span></span><svg aria-hidden="true" class="caret astro-dd74teu6 astro-al3brprd" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.25rem;"><path d="m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z"/></svg></summary><sl-sidebar-restore data-index="10"></sl-sidebar-restore><ul class="astro-dd74teu6"><li class="astro-dd74teu6"><a href="/modules/identity/" class="astro-dd74teu6"><span class="astro-dd74teu6">Overview</span></a></li><li class="astro-dd74teu6"><a href="/modules/identity/login/" class="astro-dd74teu6"><span class="astro-dd74teu6">Registration &amp; login</span></a></li><li class="astro-dd74teu6"><a href="/modules/identity/current-user/" class="astro-dd74teu6"><span class="astro-dd74teu6">The current user</span></a></li><li class="astro-dd74teu6"><a href="/modules/identity/claims/" class="astro-dd74teu6"><span class="astro-dd74teu6">Claims &amp; enrichment</span></a></li><li class="astro-dd74teu6"><a href="/modules/identity/google/" class="astro-dd74teu6"><span class="astro-dd74teu6">Google sign-in</span></a></li></ul></details></li><li class="astro-dd74teu6"><details class="astro-dd74teu6"><summary class="astro-dd74teu6"><span class="group-label astro-dd74teu6"><span class="large astro-dd74teu6">Jobs</span></span><svg aria-hidden="true" class="caret astro-dd74teu6 astro-al3brprd" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.25rem;"><path d="m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z"/></svg></summary><sl-sidebar-restore data-index="11"></sl-sidebar-restore><ul class="astro-dd74teu6"><li class="astro-dd74teu6"><a href="/modules/jobs/" class="astro-dd74teu6"><span class="astro-dd74teu6">Overview</span></a></li><li class="astro-dd74teu6"><a href="/modules/jobs/identity/" class="astro-dd74teu6"><span class="astro-dd74teu6">Job identity</span></a></li><li class="astro-dd74teu6"><a href="/modules/jobs/recurring/" class="astro-dd74teu6"><span class="astro-dd74teu6">Recurring &amp; scheduling</span></a></li><li class="astro-dd74teu6"><a href="/modules/jobs/durability/" class="astro-dd74teu6"><span class="astro-dd74teu6">Durability &amp; delivery</span></a></li></ul></details></li><li class="astro-dd74teu6"><details class="astro-dd74teu6"><summary class="astro-dd74teu6"><span class="group-label astro-dd74teu6"><span class="large astro-dd74teu6">OAuth</span></span><svg aria-hidden="true" class="caret astro-dd74teu6 astro-al3brprd" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.25rem;"><path d="m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z"/></svg></summary><sl-sidebar-restore data-index="12"></sl-sidebar-restore><ul class="astro-dd74teu6"><li class="astro-dd74teu6"><a href="/modules/oauth/" class="astro-dd74teu6"><span class="astro-dd74teu6">Overview</span></a></li><li class="astro-dd74teu6"><a href="/modules/oauth/connections/" class="astro-dd74teu6"><span class="astro-dd74teu6">Connections</span></a></li><li class="astro-dd74teu6"><a href="/modules/oauth/storage/" class="astro-dd74teu6"><span class="astro-dd74teu6">Storage &amp; encryption</span></a></li></ul></details></li><li class="astro-dd74teu6"><details class="astro-dd74teu6"><summary class="astro-dd74teu6"><span class="group-label astro-dd74teu6"><span class="large astro-dd74teu6">Payments</span></span><svg aria-hidden="true" class="caret astro-dd74teu6 astro-al3brprd" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.25rem;"><path d="m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z"/></svg></summary><sl-sidebar-restore data-index="13"></sl-sidebar-restore><ul class="astro-dd74teu6"><li class="astro-dd74teu6"><a href="/modules/payments/" class="astro-dd74teu6"><span class="astro-dd74teu6">Overview</span></a></li><li class="astro-dd74teu6"><a href="/modules/payments/webhooks/" class="astro-dd74teu6"><span class="astro-dd74teu6">Webhooks</span></a></li><li class="astro-dd74teu6"><a href="/modules/payments/safety/" class="astro-dd74teu6"><span class="astro-dd74teu6">PCI scope &amp; idempotency</span></a></li></ul></details></li><li class="astro-dd74teu6"><details class="astro-dd74teu6"><summary class="astro-dd74teu6"><span class="group-label astro-dd74teu6"><span class="large astro-dd74teu6">REST</span></span><svg aria-hidden="true" class="caret astro-dd74teu6 astro-al3brprd" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.25rem;"><path d="m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z"/></svg></summary><sl-sidebar-restore data-index="14"></sl-sidebar-restore><ul class="astro-dd74teu6"><li class="astro-dd74teu6"><a href="/modules/rest/" class="astro-dd74teu6"><span class="astro-dd74teu6">Overview</span></a></li><li class="astro-dd74teu6"><a href="/modules/rest/routing/" class="astro-dd74teu6"><span class="astro-dd74teu6">Routing &amp; binding</span></a></li><li class="astro-dd74teu6"><a href="/modules/rest/responses/" class="astro-dd74teu6"><span class="astro-dd74teu6">Responses &amp; status codes</span></a></li><li class="astro-dd74teu6"><a href="/modules/rest/media/" class="astro-dd74teu6"><span class="astro-dd74teu6">Media &amp; downloads</span></a></li><li class="astro-dd74teu6"><a href="/modules/rest/authorization/" class="astro-dd74teu6"><span class="astro-dd74teu6">Authorization</span></a></li><li class="astro-dd74teu6"><a href="/modules/rest/webhooks/" class="astro-dd74teu6"><span class="astro-dd74teu6">Webhooks</span></a></li><li class="astro-dd74teu6"><a href="/modules/rest/hypermedia/" class="astro-dd74teu6"><span class="astro-dd74teu6">Hypermedia</span></a></li></ul></details></li><li class="astro-dd74teu6"><details class="astro-dd74teu6"><summary class="astro-dd74teu6"><span class="group-label astro-dd74teu6"><span class="large astro-dd74teu6">Screens</span></span><svg aria-hidden="true" class="caret astro-dd74teu6 astro-al3brprd" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.25rem;"><path d="m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z"/></svg></summary><sl-sidebar-restore data-index="15"></sl-sidebar-restore><ul class="astro-dd74teu6"><li class="astro-dd74teu6"><a href="/modules/screens/" class="astro-dd74teu6"><span class="astro-dd74teu6">Overview</span></a></li><li class="astro-dd74teu6"><a href="/modules/screens/lists/" class="astro-dd74teu6"><span class="astro-dd74teu6">List screens</span></a></li><li class="astro-dd74teu6"><a href="/modules/screens/detail-and-forms/" class="astro-dd74teu6"><span class="astro-dd74teu6">Detail &amp; form screens</span></a></li><li class="astro-dd74teu6"><a href="/modules/screens/actions/" class="astro-dd74teu6"><span class="astro-dd74teu6">Actions</span></a></li></ul></details></li><li class="astro-dd74teu6"><a href="/modules/serversentevents/" class="astro-dd74teu6"><span class="astro-dd74teu6">Server-Sent Events</span></a></li><li class="astro-dd74teu6"><a href="/modules/slack/" class="astro-dd74teu6"><span class="astro-dd74teu6">Slack</span></a></li><li class="astro-dd74teu6"><a href="/modules/sms/" class="astro-dd74teu6"><span class="astro-dd74teu6">SMS</span></a></li><li class="astro-dd74teu6"><a href="/modules/storage/" class="astro-dd74teu6"><span class="astro-dd74teu6">Storage</span></a></li><li class="astro-dd74teu6"><a href="/modules/time/" class="astro-dd74teu6"><span class="astro-dd74teu6">Time</span></a></li><li class="astro-dd74teu6"><a href="/modules/translation/" class="astro-dd74teu6"><span class="astro-dd74teu6">Translation</span></a></li></ul></details></li><li class="astro-dd74teu6"><details open class="astro-dd74teu6"><summary class="astro-dd74teu6"><span class="group-label astro-dd74teu6"><span class="large astro-dd74teu6">Platforms</span></span><svg aria-hidden="true" class="caret astro-dd74teu6 astro-al3brprd" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.25rem;"><path d="m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z"/></svg></summary><sl-sidebar-restore data-index="16"></sl-sidebar-restore><ul class="astro-dd74teu6"><li class="astro-dd74teu6"><a href="/platforms/azure-storage/" class="astro-dd74teu6"><span class="astro-dd74teu6">Azure Storage</span></a></li><li class="astro-dd74teu6"><a href="/platforms/entity-framework/" class="astro-dd74teu6"><span class="astro-dd74teu6">Entity Framework</span></a></li><li class="astro-dd74teu6"><a href="/platforms/postgres/" class="astro-dd74teu6"><span class="astro-dd74teu6">PostgreSQL</span></a></li><li class="astro-dd74teu6"><a href="/platforms/redis/" class="astro-dd74teu6"><span class="astro-dd74teu6">Redis</span></a></li></ul></details></li><li class="astro-dd74teu6"><details open class="astro-dd74teu6"><summary class="astro-dd74teu6"><span class="group-label astro-dd74teu6"><span class="large astro-dd74teu6">Reference</span></span><svg aria-hidden="true" class="caret astro-dd74teu6 astro-al3brprd" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.25rem;"><path d="m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z"/></svg></summary><sl-sidebar-restore data-index="17"></sl-sidebar-restore><ul class="astro-dd74teu6"><li class="astro-dd74teu6"><details class="astro-dd74teu6"><summary class="astro-dd74teu6"><span class="group-label astro-dd74teu6"><span class="large astro-dd74teu6">Configuration</span></span><svg aria-hidden="true" class="caret astro-dd74teu6 astro-al3brprd" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.25rem;"><path d="m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z"/></svg></summary><sl-sidebar-restore data-index="18"></sl-sidebar-restore><ul class="astro-dd74teu6"><li class="astro-dd74teu6"><a href="/reference/config/" class="astro-dd74teu6"><span class="astro-dd74teu6">Overview</span></a></li><li class="astro-dd74teu6"><a href="/reference/config/ical/" class="astro-dd74teu6"><span class="astro-dd74teu6">ICal</span></a></li><li class="astro-dd74teu6"><a href="/reference/config/oval-auth-clilogin/" class="astro-dd74teu6"><span class="astro-dd74teu6">Oval:Auth:CliLogin</span></a></li><li class="astro-dd74teu6"><a href="/reference/config/oval-auth-google/" class="astro-dd74teu6"><span class="astro-dd74teu6">Oval:Auth:Google</span></a></li><li class="astro-dd74teu6"><a href="/reference/config/oval-auth-jwt/" class="astro-dd74teu6"><span class="astro-dd74teu6">Oval:Auth:Jwt</span></a></li><li class="astro-dd74teu6"><a href="/reference/config/oval-email-ses/" class="astro-dd74teu6"><span class="astro-dd74teu6">Oval:Email:Ses</span></a></li><li class="astro-dd74teu6"><a href="/reference/config/oval-idempotency/" class="astro-dd74teu6"><span class="astro-dd74teu6">Oval:Idempotency</span></a></li><li class="astro-dd74teu6"><a href="/reference/config/oval-identity/" class="astro-dd74teu6"><span class="astro-dd74teu6">Oval:Identity</span></a></li><li class="astro-dd74teu6"><a href="/reference/config/oval-payments-stripe/" class="astro-dd74teu6"><span class="astro-dd74teu6">Oval:Payments:Stripe</span></a></li><li class="astro-dd74teu6"><a href="/reference/config/oval-platform-azurestorage/" class="astro-dd74teu6"><span class="astro-dd74teu6">Oval:Platform:AzureStorage</span></a></li><li class="astro-dd74teu6"><a href="/reference/config/oval-platform-entityframework/" class="astro-dd74teu6"><span class="astro-dd74teu6">Oval:Platform:EntityFramework</span></a></li><li class="astro-dd74teu6"><a href="/reference/config/oval-platform-entityframework-outbox/" class="astro-dd74teu6"><span class="astro-dd74teu6">Oval:Platform:EntityFramework:Outbox</span></a></li><li class="astro-dd74teu6"><a href="/reference/config/oval-platform-redis/" class="astro-dd74teu6"><span class="astro-dd74teu6">Oval:Platform:Redis</span></a></li><li class="astro-dd74teu6"><a href="/reference/config/oval-resilience/" class="astro-dd74teu6"><span class="astro-dd74teu6">Oval:Resilience</span></a></li><li class="astro-dd74teu6"><a href="/reference/config/oval-slack/" class="astro-dd74teu6"><span class="astro-dd74teu6">Oval:Slack</span></a></li><li class="astro-dd74teu6"><a href="/reference/config/oval-sms-twilio/" class="astro-dd74teu6"><span class="astro-dd74teu6">Oval:Sms:Twilio</span></a></li><li class="astro-dd74teu6"><a href="/reference/config/oval-storage-azureblob/" class="astro-dd74teu6"><span class="astro-dd74teu6">Oval:Storage:AzureBlob</span></a></li><li class="astro-dd74teu6"><a href="/reference/config/oval-translation-azure/" class="astro-dd74teu6"><span class="astro-dd74teu6">Oval:Translation:Azure</span></a></li><li class="astro-dd74teu6"><a href="/reference/config/oval-translation-cache/" class="astro-dd74teu6"><span class="astro-dd74teu6">Oval:Translation:Cache</span></a></li></ul></details></li><li class="astro-dd74teu6"><details class="astro-dd74teu6"><summary class="astro-dd74teu6"><span class="group-label astro-dd74teu6"><span class="large astro-dd74teu6">Command-line</span></span><svg aria-hidden="true" class="caret astro-dd74teu6 astro-al3brprd" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.25rem;"><path d="m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z"/></svg></summary><sl-sidebar-restore data-index="19"></sl-sidebar-restore><ul class="astro-dd74teu6"><li class="astro-dd74teu6"><a href="/reference/cli/" class="astro-dd74teu6"><span class="astro-dd74teu6">Overview</span></a></li><li class="astro-dd74teu6"><a href="/reference/cli/config-docs/" class="astro-dd74teu6"><span class="astro-dd74teu6">oval config docs</span></a></li><li class="astro-dd74teu6"><a href="/reference/cli/config-sync/" class="astro-dd74teu6"><span class="astro-dd74teu6">oval config sync</span></a></li><li class="astro-dd74teu6"><a href="/reference/cli/docs-cli/" class="astro-dd74teu6"><span class="astro-dd74teu6">oval docs cli</span></a></li><li class="astro-dd74teu6"><a href="/reference/cli/ef-migrations-add/" class="astro-dd74teu6"><span class="astro-dd74teu6">oval ef migrations add</span></a></li><li class="astro-dd74teu6"><a href="/reference/cli/ef-migrations-has-pending/" class="astro-dd74teu6"><span class="astro-dd74teu6">oval ef migrations has-pending</span></a></li><li class="astro-dd74teu6"><a href="/reference/cli/ef-migrations-list/" class="astro-dd74teu6"><span class="astro-dd74teu6">oval ef migrations list</span></a></li><li class="astro-dd74teu6"><a href="/reference/cli/ef-migrations-remove/" class="astro-dd74teu6"><span class="astro-dd74teu6">oval ef migrations remove</span></a></li><li class="astro-dd74teu6"><a href="/reference/cli/ef-script/" class="astro-dd74teu6"><span class="astro-dd74teu6">oval ef script</span></a></li><li class="astro-dd74teu6"><a href="/reference/cli/ef-verify/" class="astro-dd74teu6"><span class="astro-dd74teu6">oval ef verify</span></a></li><li class="astro-dd74teu6"><a href="/reference/cli/screens-sync/" class="astro-dd74teu6"><span class="astro-dd74teu6">oval screens sync</span></a></li></ul></details></li><li class="astro-dd74teu6"><a href="/reference/diagnostics/" aria-current="page" class="astro-dd74teu6"><span class="astro-dd74teu6">Diagnostics</span></a></li></ul></details></li></ul><script aria-hidden="true">
+		(() => {
+			const scroller = document.getElementById('starlight__sidebar');
+			if (!window._starlightScrollRestore || !scroller) return;
+			scroller.scrollTop = window._starlightScrollRestore;
+			delete window._starlightScrollRestore;
+		})();
+	</script></sl-sidebar-state-persist><div class="md:sl-hidden"><div class="mobile-preferences sl-flex astro-qvrt7iy3"><div class="social-icons astro-qvrt7iy3"><a href="https://github.com/OV-AL/oval" rel="me" class="sl-flex astro-loubsn6f"><span class="sr-only astro-loubsn6f">GitHub</span><svg aria-hidden="true" class="astro-loubsn6f astro-al3brprd" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M12 .3a12 12 0 0 0-3.8 23.38c.6.12.83-.26.83-.57L9 21.07c-3.34.72-4.04-1.61-4.04-1.61-.55-1.39-1.34-1.76-1.34-1.76-1.08-.74.09-.73.09-.73 1.2.09 1.83 1.24 1.83 1.24 1.08 1.83 2.81 1.3 3.5 1 .1-.78.42-1.31.76-1.61-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.14-.3-.54-1.52.1-3.18 0 0 1-.32 3.3 1.23a11.5 11.5 0 0 1 6 0c2.28-1.55 3.29-1.23 3.29-1.23.64 1.66.24 2.88.12 3.18a4.65 4.65 0 0 1 1.23 3.22c0 4.61-2.8 5.63-5.48 5.92.42.36.81 1.1.81 2.22l-.01 3.29c0 .31.2.69.82.57A12 12 0 0 0 12 .3Z"/></svg></a></div><starlight-theme-select><label style="--sl-select-width: 6.25em" class="astro-huvidtzr"><span class="sr-only astro-huvidtzr">Select theme</span><svg aria-hidden="true" class="icon label-icon astro-huvidtzr astro-al3brprd" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M21 14h-1V7a3 3 0 0 0-3-3H7a3 3 0 0 0-3 3v7H3a1 1 0 0 0-1 1v2a3 3 0 0 0 3 3h14a3 3 0 0 0 3-3v-2a1 1 0 0 0-1-1ZM6 7a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v7H6V7Zm14 10a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-1h16v1Z"/></svg><select autocomplete="off" class="astro-huvidtzr"><option value="dark" class="astro-huvidtzr">Dark</option><option value="light" class="astro-huvidtzr">Light</option><option value="auto" selected class="astro-huvidtzr">Auto</option></select><svg aria-hidden="true" class="icon caret astro-huvidtzr astro-al3brprd" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M17 9.17a1 1 0 0 0-1.41 0L12 12.71 8.46 9.17a1 1 0 1 0-1.41 1.42l4.24 4.24a1.002 1.002 0 0 0 1.42 0L17 10.59a1.002 1.002 0 0 0 0-1.42Z"/></svg></label></starlight-theme-select><script>
+	StarlightThemeProvider.updatePickers();
+</script></div></div></div></div></nav><div class="main-frame astro-orllyodm"><script type="module">var e=document.getElementById(`starlight__sidebar`),t=e?.querySelector(`sl-sidebar-state-persist`),n=`sl-sidebar-state`,r=()=>{let r=[],i=t?.dataset.hash||``;try{let e=sessionStorage.getItem(n),t=JSON.parse(e||`{}`);Array.isArray(t.open)&&t.hash===i&&(r=t.open)}catch{}return{hash:i,open:r,scroll:e?.scrollTop||0}},i=e=>{try{sessionStorage.setItem(n,JSON.stringify(e))}catch{}},a=()=>i(r()),o=(e,t)=>{let n=r();n.open[t]=e,i(n)};t?.addEventListener(`click`,e=>{if(!(e.target instanceof Element))return;let t=e.target.closest(`summary`)?.closest(`details`);if(!t)return;let n=t.querySelector(`sl-sidebar-restore`),r=parseInt(n?.dataset.index||``);isNaN(r)||o(!t.open,r)}),addEventListener(`visibilitychange`,()=>{document.visibilityState===`hidden`&&a()}),addEventListener(`pageHide`,a);</script><div class="lg:sl-flex astro-fdnkvevr"><aside class="right-sidebar-container print:hidden astro-fdnkvevr"><div class="right-sidebar astro-fdnkvevr"><div class="lg:sl-hidden astro-ktn5rkrr"><mobile-starlight-toc data-min-h="2" data-max-h="3" class="astro-w4h3arar"><nav aria-labelledby="starlight__on-this-page--mobile" class="astro-w4h3arar"><details id="starlight__mobile-toc" class="astro-w4h3arar"><summary id="starlight__on-this-page--mobile" class="sl-flex astro-w4h3arar"><span class="toggle sl-flex astro-w4h3arar">On this page<svg aria-hidden="true" class="caret astro-w4h3arar astro-al3brprd" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1rem;"><path d="m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z"/></svg></span><span class="display-current astro-w4h3arar"></span></summary><div class="dropdown astro-w4h3arar"><ul class="isMobile astro-3o55a5wz" style="--depth: 0;"><li style="--depth: 0;" class="astro-3o55a5wz"><a href="#_top" style="--depth: 0;" class="astro-3o55a5wz"><span style="--depth: 0;" class="astro-3o55a5wz">Overview</span></a></li><li style="--depth: 0;" class="astro-3o55a5wz"><a href="#dispatch" style="--depth: 0;" class="astro-3o55a5wz"><span style="--depth: 0;" class="astro-3o55a5wz">Dispatch</span></a></li><li style="--depth: 0;" class="astro-3o55a5wz"><a href="#authorization--security" style="--depth: 0;" class="astro-3o55a5wz"><span style="--depth: 0;" class="astro-3o55a5wz">Authorization &amp; security</span></a></li><li style="--depth: 0;" class="astro-3o55a5wz"><a href="#configuration" style="--depth: 0;" class="astro-3o55a5wz"><span style="--depth: 0;" class="astro-3o55a5wz">Configuration</span></a></li><li style="--depth: 0;" class="astro-3o55a5wz"><a href="#idempotency-resilience--ids" style="--depth: 0;" class="astro-3o55a5wz"><span style="--depth: 0;" class="astro-3o55a5wz">Idempotency, resilience &amp; ids</span></a></li><li style="--depth: 0;" class="astro-3o55a5wz"><a href="#datastore" style="--depth: 0;" class="astro-3o55a5wz"><span style="--depth: 0;" class="astro-3o55a5wz">DataStore</span></a></li><li style="--depth: 0;" class="astro-3o55a5wz"><a href="#jobs" style="--depth: 0;" class="astro-3o55a5wz"><span style="--depth: 0;" class="astro-3o55a5wz">Jobs</span></a></li><li style="--depth: 0;" class="astro-3o55a5wz"><a href="#events" style="--depth: 0;" class="astro-3o55a5wz"><span style="--depth: 0;" class="astro-3o55a5wz">Events</span></a></li><li style="--depth: 0;" class="astro-3o55a5wz"><a href="#http-clients" style="--depth: 0;" class="astro-3o55a5wz"><span style="--depth: 0;" class="astro-3o55a5wz">HTTP clients</span></a></li><li style="--depth: 0;" class="astro-3o55a5wz"><a href="#oauth" style="--depth: 0;" class="astro-3o55a5wz"><span style="--depth: 0;" class="astro-3o55a5wz">OAuth</span></a></li><li style="--depth: 0;" class="astro-3o55a5wz"><a href="#identity" style="--depth: 0;" class="astro-3o55a5wz"><span style="--depth: 0;" class="astro-3o55a5wz">Identity</span></a></li><li style="--depth: 0;" class="astro-3o55a5wz"><a href="#payments" style="--depth: 0;" class="astro-3o55a5wz"><span style="--depth: 0;" class="astro-3o55a5wz">Payments</span></a></li><li style="--depth: 0;" class="astro-3o55a5wz"><a href="#rest" style="--depth: 0;" class="astro-3o55a5wz"><span style="--depth: 0;" class="astro-3o55a5wz">REST</span></a></li><li style="--depth: 0;" class="astro-3o55a5wz"><a href="#screens" style="--depth: 0;" class="astro-3o55a5wz"><span style="--depth: 0;" class="astro-3o55a5wz">Screens</span></a></li><li style="--depth: 0;" class="astro-3o55a5wz"><a href="#server-sent-events" style="--depth: 0;" class="astro-3o55a5wz"><span style="--depth: 0;" class="astro-3o55a5wz">Server-Sent Events</span></a></li><li style="--depth: 0;" class="astro-3o55a5wz"><a href="#slack" style="--depth: 0;" class="astro-3o55a5wz"><span style="--depth: 0;" class="astro-3o55a5wz">Slack</span></a></li><li style="--depth: 0;" class="astro-3o55a5wz"><a href="#csv" style="--depth: 0;" class="astro-3o55a5wz"><span style="--depth: 0;" class="astro-3o55a5wz">CSV</span></a></li></ul></div></details></nav></mobile-starlight-toc><script type="module" src="/_astro/MobileTableOfContents.astro_astro_type_script_index_0_lang.BcSo_yiZ.js"></script></div><div class="right-sidebar-panel sl-hidden lg:sl-block astro-ktn5rkrr"><div class="sl-container astro-ktn5rkrr"><starlight-toc data-min-h="2" data-max-h="3"><nav aria-labelledby="starlight__on-this-page"><h2 id="starlight__on-this-page">On this page</h2><ul class="astro-3o55a5wz" style="--depth: 0;"><li style="--depth: 0;" class="astro-3o55a5wz"><a href="#_top" style="--depth: 0;" class="astro-3o55a5wz"><span style="--depth: 0;" class="astro-3o55a5wz">Overview</span></a></li><li style="--depth: 0;" class="astro-3o55a5wz"><a href="#dispatch" style="--depth: 0;" class="astro-3o55a5wz"><span style="--depth: 0;" class="astro-3o55a5wz">Dispatch</span></a></li><li style="--depth: 0;" class="astro-3o55a5wz"><a href="#authorization--security" style="--depth: 0;" class="astro-3o55a5wz"><span style="--depth: 0;" class="astro-3o55a5wz">Authorization &amp; security</span></a></li><li style="--depth: 0;" class="astro-3o55a5wz"><a href="#configuration" style="--depth: 0;" class="astro-3o55a5wz"><span style="--depth: 0;" class="astro-3o55a5wz">Configuration</span></a></li><li style="--depth: 0;" class="astro-3o55a5wz"><a href="#idempotency-resilience--ids" style="--depth: 0;" class="astro-3o55a5wz"><span style="--depth: 0;" class="astro-3o55a5wz">Idempotency, resilience &amp; ids</span></a></li><li style="--depth: 0;" class="astro-3o55a5wz"><a href="#datastore" style="--depth: 0;" class="astro-3o55a5wz"><span style="--depth: 0;" class="astro-3o55a5wz">DataStore</span></a></li><li style="--depth: 0;" class="astro-3o55a5wz"><a href="#jobs" style="--depth: 0;" class="astro-3o55a5wz"><span style="--depth: 0;" class="astro-3o55a5wz">Jobs</span></a></li><li style="--depth: 0;" class="astro-3o55a5wz"><a href="#events" style="--depth: 0;" class="astro-3o55a5wz"><span style="--depth: 0;" class="astro-3o55a5wz">Events</span></a></li><li style="--depth: 0;" class="astro-3o55a5wz"><a href="#http-clients" style="--depth: 0;" class="astro-3o55a5wz"><span style="--depth: 0;" class="astro-3o55a5wz">HTTP clients</span></a></li><li style="--depth: 0;" class="astro-3o55a5wz"><a href="#oauth" style="--depth: 0;" class="astro-3o55a5wz"><span style="--depth: 0;" class="astro-3o55a5wz">OAuth</span></a></li><li style="--depth: 0;" class="astro-3o55a5wz"><a href="#identity" style="--depth: 0;" class="astro-3o55a5wz"><span style="--depth: 0;" class="astro-3o55a5wz">Identity</span></a></li><li style="--depth: 0;" class="astro-3o55a5wz"><a href="#payments" style="--depth: 0;" class="astro-3o55a5wz"><span style="--depth: 0;" class="astro-3o55a5wz">Payments</span></a></li><li style="--depth: 0;" class="astro-3o55a5wz"><a href="#rest" style="--depth: 0;" class="astro-3o55a5wz"><span style="--depth: 0;" class="astro-3o55a5wz">REST</span></a></li><li style="--depth: 0;" class="astro-3o55a5wz"><a href="#screens" style="--depth: 0;" class="astro-3o55a5wz"><span style="--depth: 0;" class="astro-3o55a5wz">Screens</span></a></li><li style="--depth: 0;" class="astro-3o55a5wz"><a href="#server-sent-events" style="--depth: 0;" class="astro-3o55a5wz"><span style="--depth: 0;" class="astro-3o55a5wz">Server-Sent Events</span></a></li><li style="--depth: 0;" class="astro-3o55a5wz"><a href="#slack" style="--depth: 0;" class="astro-3o55a5wz"><span style="--depth: 0;" class="astro-3o55a5wz">Slack</span></a></li><li style="--depth: 0;" class="astro-3o55a5wz"><a href="#csv" style="--depth: 0;" class="astro-3o55a5wz"><span style="--depth: 0;" class="astro-3o55a5wz">CSV</span></a></li></ul></nav></starlight-toc><script type="module" src="/_astro/TableOfContents.astro_astro_type_script_index_0_lang.Csloo1VZ.js"></script></div></div></div></aside><div class="main-pane astro-fdnkvevr"><main data-pagefind-body class="astro-lv6ema5g" lang="en" dir="ltr"><div class="content-panel astro-i66nolwl"><div class="sl-container astro-i66nolwl"><h1 id="_top" class="astro-k2ijxxtp">Diagnostics</h1></div></div><div class="content-panel astro-i66nolwl"><div class="sl-container astro-i66nolwl"><div class="sl-markdown-content"><p>Oval’s analyzers report structural problems at build time, each with a stable identifier you will see in your
+build output. This page is the single place those identifiers are listed, grouped by the area that raises
+them, with a one-line description and fix for each.</p>
+<div class="sl-heading-wrapper level-h2"><h2 id="dispatch">Dispatch</h2><a class="sl-anchor-link" href="#dispatch"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 1 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 0 0-1.42-1.42m8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 1 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l3.88-3.89a4.49 4.49 0 0 0 0-6.33M8.83 15.17a1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.92-4.92a1 1 0 1 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42"></path></svg></span><span class="sr-only" data-pagefind-ignore>Section titled “Dispatch”</span></a></div>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Reports</th>
+<th>Fix</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code dir="auto">OVDSP01</code></td>
+<td>A command lifecycle hook has an invalid signature and never fires.</td>
+<td>Make it <code dir="auto">static</code>, take <code dir="auto">(TCommand, CommandContext)</code>, return <code dir="auto">Eff&lt;RT, Unit&gt;</code>.</td>
+</tr>
+<tr>
+<td><code dir="auto">OVDSP02</code></td>
+<td>A lifecycle hook targets a command that has no handler.</td>
+<td>Point the hook at a command that has a <code dir="auto">[CommandHandler]</code>.</td>
+</tr>
+<tr>
+<td><code dir="auto">OVCAP03</code></td>
+<td>A handler’s runtime type is not a <code dir="auto">[BoundedContext]</code> class.</td>
+<td>Return <code dir="auto">Eff</code> over a <code dir="auto">[BoundedContext]</code> class.</td>
+</tr>
+<tr>
+<td><code dir="auto">OVCAP02</code></td>
+<td>Two referenced capabilities declare the same effects-section name, which would collide.</td>
+<td>Rename one module’s effects section, or set a distinct <code dir="auto">EffectsSection</code>.</td>
+</tr>
+</tbody>
+</table>
+<div class="sl-heading-wrapper level-h2"><h2 id="authorization--security">Authorization &amp; security</h2><a class="sl-anchor-link" href="#authorization--security"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 1 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 0 0-1.42-1.42m8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 1 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l3.88-3.89a4.49 4.49 0 0 0 0-6.33M8.83 15.17a1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.92-4.92a1 1 0 1 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42"></path></svg></span><span class="sr-only" data-pagefind-ignore>Section titled “Authorization &amp; security”</span></a></div>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Reports</th>
+<th>Fix</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code dir="auto">OVAUTH01</code></td>
+<td>A dispatch handler declares no authorization decision.</td>
+<td>Add <code dir="auto">[Authorize]</code>, <code dir="auto">[AllowAnonymous]</code>, or <code dir="auto">[SystemOnly]</code>.</td>
+</tr>
+<tr>
+<td><code dir="auto">OVAUTH02</code></td>
+<td>A JWT validator never checks the revocation store, so it accepts revoked tokens.</td>
+<td>Call <code dir="auto">IRevocationStore.IsRevokedAsync</code> and fail closed.</td>
+</tr>
+<tr>
+<td><code dir="auto">OVAUTH03</code></td>
+<td>A dispatch handler declares more than one authorization decision.</td>
+<td>Keep exactly one of <code dir="auto">[Authorize]</code>, <code dir="auto">[AllowAnonymous]</code>, or <code dir="auto">[SystemOnly]</code>.</td>
+</tr>
+<tr>
+<td><code dir="auto">OVSEC01</code></td>
+<td>A <code dir="auto">[DevelopmentOnly]</code> type implements a DI contributor and could reach production.</td>
+<td>Remove <code dir="auto">[DevelopmentOnly]</code>, or move it to a test-only contributor.</td>
+</tr>
+<tr>
+<td><code dir="auto">OVSEC02</code></td>
+<td>A DI contributor’s assembly is not in the trust lockfile.</td>
+<td>Add the trusted assembly to <code dir="auto">oval.contributors.lock</code>.</td>
+</tr>
+<tr>
+<td><code dir="auto">OVSEC09</code></td>
+<td>A connection string is read without <code dir="auto">Secret</code> wrapping, escaping redaction.</td>
+<td>Pass the read to <code dir="auto">Secret.FromConfigBinder</code> or <code dir="auto">Secret.From</code>.</td>
+</tr>
+<tr>
+<td><code dir="auto">OVSEC11</code></td>
+<td>A secret-named <code dir="auto">[ConfigSection]</code> property is a plain string.</td>
+<td>Change the property to <code dir="auto">Secret&lt;string&gt;</code>.</td>
+</tr>
+<tr>
+<td><code dir="auto">OVDBI01</code></td>
+<td>Database isolation is enforced but the build uses a provider without row-level security.</td>
+<td>Use the PostgreSQL platform, or drop the isolation enforcement.</td>
+</tr>
+</tbody>
+</table>
+<div class="sl-heading-wrapper level-h2"><h2 id="configuration">Configuration</h2><a class="sl-anchor-link" href="#configuration"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 1 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 0 0-1.42-1.42m8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 1 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l3.88-3.89a4.49 4.49 0 0 0 0-6.33M8.83 15.17a1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.92-4.92a1 1 0 1 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42"></path></svg></span><span class="sr-only" data-pagefind-ignore>Section titled “Configuration”</span></a></div>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Reports</th>
+<th>Fix</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code dir="auto">OVCFG02</code></td>
+<td>A connection-fallback declaration is incomplete or wrongly typed.</td>
+<td>Make it a <code dir="auto">Secret&lt;string&gt;</code> naming a sibling connection-name property.</td>
+</tr>
+<tr>
+<td><code dir="auto">OVCFG03</code></td>
+<td>A <code dir="auto">Config&lt;T&gt;()</code> type argument is not a <code dir="auto">[ConfigSection]</code>, so it binds defaults silently.</td>
+<td>Mark the type <code dir="auto">[ConfigSection]</code> (or register it).</td>
+</tr>
+</tbody>
+</table>
+<div class="sl-heading-wrapper level-h2"><h2 id="idempotency-resilience--ids">Idempotency, resilience &amp; ids</h2><a class="sl-anchor-link" href="#idempotency-resilience--ids"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 1 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 0 0-1.42-1.42m8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 1 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l3.88-3.89a4.49 4.49 0 0 0 0-6.33M8.83 15.17a1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.92-4.92a1 1 0 1 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42"></path></svg></span><span class="sr-only" data-pagefind-ignore>Section titled “Idempotency, resilience &amp; ids”</span></a></div>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Reports</th>
+<th>Fix</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code dir="auto">OVIDEM01</code></td>
+<td><code dir="auto">[Idempotent]</code> sits on a read-only query handler.</td>
+<td>Move <code dir="auto">[Idempotent]</code> to a <code dir="auto">[CommandHandler]</code>.</td>
+</tr>
+<tr>
+<td><code dir="auto">OVIDEM02</code></td>
+<td><code dir="auto">[Idempotent]</code> without a key relies on the request header and fails off-HTTP.</td>
+<td>Set <code dir="auto">Key = nameof(Command.Field)</code> for a server-derived key.</td>
+</tr>
+<tr>
+<td><code dir="auto">OVRES01</code></td>
+<td><code dir="auto">[Resilient]</code> is missing a policy name or is not on a dispatch handler.</td>
+<td>Put <code dir="auto">[Resilient("policy")]</code> on a handler with a valid policy.</td>
+</tr>
+<tr>
+<td><code dir="auto">OVTID01</code></td>
+<td>A typed id is minted with its static factory inside a handler, bypassing the deterministic seam.</td>
+<td>Mint with the <code dir="auto">NewId&lt;TId&gt;()</code> effect.</td>
+</tr>
+<tr>
+<td><code dir="auto">OVSTUB01</code></td>
+<td>A <code dir="auto">[Stubbable]</code> member (generic or by-ref) cannot be stubbed and gets a throwing default.</td>
+<td>Avoid generic/by-ref members, or accept the throwing default.</td>
+</tr>
+</tbody>
+</table>
+<div class="sl-heading-wrapper level-h2"><h2 id="datastore">DataStore</h2><a class="sl-anchor-link" href="#datastore"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 1 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 0 0-1.42-1.42m8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 1 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l3.88-3.89a4.49 4.49 0 0 0 0-6.33M8.83 15.17a1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.92-4.92a1 1 0 1 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42"></path></svg></span><span class="sr-only" data-pagefind-ignore>Section titled “DataStore”</span></a></div>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Reports</th>
+<th>Fix</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code dir="auto">OVDS01</code></td>
+<td>A DataStore facet (such as <code dir="auto">[Owned]</code> or <code dir="auto">[TenantScoped]</code>) is on a non-<code dir="auto">[StoredEntity]</code> type.</td>
+<td>Add <code dir="auto">[StoredEntity]</code>, or remove the facet.</td>
+</tr>
+</tbody>
+</table>
+<div class="sl-heading-wrapper level-h2"><h2 id="jobs">Jobs</h2><a class="sl-anchor-link" href="#jobs"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 1 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 0 0-1.42-1.42m8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 1 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l3.88-3.89a4.49 4.49 0 0 0 0-6.33M8.83 15.17a1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.92-4.92a1 1 0 1 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42"></path></svg></span><span class="sr-only" data-pagefind-ignore>Section titled “Jobs”</span></a></div>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Reports</th>
+<th>Fix</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code dir="auto">OVJOB01</code></td>
+<td>A job handler resolves the ambient current user, which jobs do not have.</td>
+<td>Resolve <code dir="auto">IJobContext</code> and use its identity.</td>
+</tr>
+<tr>
+<td><code dir="auto">OVJOBS01</code></td>
+<td>A job handler has no bounded context that activates jobs to host it.</td>
+<td>Add a context with <code dir="auto">[Uses&lt;Jobs&gt;]</code>.</td>
+</tr>
+<tr>
+<td><code dir="auto">OVJOBS02</code></td>
+<td>A job handler does not take exactly one job payload.</td>
+<td>Give it a single <code dir="auto">[BackgroundJob]</code> parameter.</td>
+</tr>
+<tr>
+<td><code dir="auto">OVJOBS03</code></td>
+<td>A job payload has more than one handler.</td>
+<td>Keep exactly one handler per payload.</td>
+</tr>
+<tr>
+<td><code dir="auto">OVJOBS04</code></td>
+<td>A job handler is not a static effect over its bounded context.</td>
+<td>Make it a static method returning <code dir="auto">Eff&lt;BC, Unit&gt;</code>.</td>
+</tr>
+<tr>
+<td><code dir="auto">OVJOBS05</code></td>
+<td>A recurring job has an invalid cron expression.</td>
+<td>Use a standard 5-field cron expression (e.g. <code dir="auto">0 9 * * 1-5</code>).</td>
+</tr>
+<tr>
+<td><code dir="auto">OVJOBS06</code></td>
+<td>A recurring job’s payload is not parameterless.</td>
+<td>Give the <code dir="auto">[BackgroundJob(Cron = …)]</code> payload a parameterless constructor.</td>
+</tr>
+<tr>
+<td><code dir="auto">OVJOBS07</code></td>
+<td><code dir="auto">TimeZone</code> is set without <code dir="auto">Cron</code>.</td>
+<td>Add a <code dir="auto">Cron</code> schedule, or remove <code dir="auto">TimeZone</code>.</td>
+</tr>
+</tbody>
+</table>
+<div class="sl-heading-wrapper level-h2"><h2 id="events">Events</h2><a class="sl-anchor-link" href="#events"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 1 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 0 0-1.42-1.42m8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 1 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l3.88-3.89a4.49 4.49 0 0 0 0-6.33M8.83 15.17a1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.92-4.92a1 1 0 1 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42"></path></svg></span><span class="sr-only" data-pagefind-ignore>Section titled “Events”</span></a></div>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Reports</th>
+<th>Fix</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code dir="auto">OVEVT01</code></td>
+<td>An event handler does not take exactly one event payload.</td>
+<td>Give it a single <code dir="auto">[Event&lt;…&gt;]</code> parameter.</td>
+</tr>
+<tr>
+<td><code dir="auto">OVEVT02</code></td>
+<td>An event handler is not a static effect over its bounded context.</td>
+<td>Make it a static method returning <code dir="auto">Eff&lt;BC, Unit&gt;</code>.</td>
+</tr>
+<tr>
+<td><code dir="auto">OVEVT03</code></td>
+<td>An event handler’s context does not use the event’s module, so events are not delivered.</td>
+<td>Add <code dir="auto">[Uses&lt;TEventModule&gt;]</code> to the context.</td>
+</tr>
+<tr>
+<td><code dir="auto">OVEVT04</code></td>
+<td>An event’s module type is not marked <code dir="auto">[EventModule]</code>.</td>
+<td>Mark the module type <code dir="auto">[EventModule]</code>.</td>
+</tr>
+<tr>
+<td><code dir="auto">OVEVT05</code></td>
+<td>An event module’s effects section is shadowed by a same-named top-level type.</td>
+<td>Set a distinct <code dir="auto">[EventModule(EffectsSection = "…")]</code>, or qualify the call.</td>
+</tr>
+</tbody>
+</table>
+<div class="sl-heading-wrapper level-h2"><h2 id="http-clients">HTTP clients</h2><a class="sl-anchor-link" href="#http-clients"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 1 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 0 0-1.42-1.42m8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 1 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l3.88-3.89a4.49 4.49 0 0 0 0-6.33M8.83 15.17a1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.92-4.92a1 1 0 1 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42"></path></svg></span><span class="sr-only" data-pagefind-ignore>Section titled “HTTP clients”</span></a></div>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Reports</th>
+<th>Fix</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code dir="auto">OVHTTP01</code></td>
+<td>An <code dir="auto">[HttpClient]</code> type is not partial, so no operations generate.</td>
+<td>Declare the type <code dir="auto">partial</code>.</td>
+</tr>
+<tr>
+<td><code dir="auto">OVHTTP02</code></td>
+<td>An <code dir="auto">[HttpClient&lt;T&gt;]</code> config type is not a <code dir="auto">[ConfigSection]</code>, so nothing binds it.</td>
+<td>Annotate the config type <code dir="auto">[ConfigSection]</code>.</td>
+</tr>
+<tr>
+<td><code dir="auto">OVHTTP03</code></td>
+<td>An <code dir="auto">[HttpClient]</code> declares more than one auth attribute.</td>
+<td>Keep only one of <code dir="auto">[BearerAuth]</code> or <code dir="auto">[BasicAuth]</code>.</td>
+</tr>
+<tr>
+<td><code dir="auto">OVHTTP04</code></td>
+<td>An operation binds both <code dir="auto">[Body]</code> and <code dir="auto">[Form]</code> for one request.</td>
+<td>Use only <code dir="auto">[Body]</code> or only <code dir="auto">[Form]</code>.</td>
+</tr>
+<tr>
+<td><code dir="auto">OVHTTP05</code></td>
+<td>An <code dir="auto">[OAuthBacked&lt;T&gt;]</code> client does not reference an <code dir="auto">[OAuthProvider]</code> or adds extra auth.</td>
+<td>Point <code dir="auto">T</code> at an <code dir="auto">[OAuthProvider]</code> and remove other auth attributes.</td>
+</tr>
+</tbody>
+</table>
+<div class="sl-heading-wrapper level-h2"><h2 id="oauth">OAuth</h2><a class="sl-anchor-link" href="#oauth"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 1 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 0 0-1.42-1.42m8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 1 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l3.88-3.89a4.49 4.49 0 0 0 0-6.33M8.83 15.17a1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.92-4.92a1 1 0 1 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42"></path></svg></span><span class="sr-only" data-pagefind-ignore>Section titled “OAuth”</span></a></div>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Reports</th>
+<th>Fix</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code dir="auto">OVOA01</code></td>
+<td>An <code dir="auto">[OAuthProvider]</code> does not expose <code dir="auto">Secret&lt;string&gt;</code> client id and secret.</td>
+<td>Declare both as <code dir="auto">Secret&lt;string&gt;</code> properties.</td>
+</tr>
+<tr>
+<td><code dir="auto">OVOA02</code></td>
+<td>An <code dir="auto">[OAuthProvider]</code> class is not a <code dir="auto">[ConfigSection]</code>, so credentials do not bind.</td>
+<td>Also annotate it <code dir="auto">[ConfigSection]</code>.</td>
+</tr>
+<tr>
+<td><code dir="auto">OVOA03</code></td>
+<td>An OAuth refresh mapper has the wrong signature.</td>
+<td>Make it static <code dir="auto">(OAuthRefreshResponse, OAuthTokenEnvelope)</code> returning <code dir="auto">OAuthTokenEnvelope</code>.</td>
+</tr>
+<tr>
+<td><code dir="auto">OVOA04</code></td>
+<td>A provider that rotates refresh tokens has no refresh mapper.</td>
+<td>Add an <code dir="auto">[OAuthRefreshOperation]</code> mapper, or rely on standard mapping.</td>
+</tr>
+<tr>
+<td><code dir="auto">OVOA05</code></td>
+<td>An <code dir="auto">[OAuthBacked&lt;T&gt;]</code> does not reference an <code dir="auto">[OAuthProvider]</code> or has an empty connection id.</td>
+<td>Reference a declared provider with a non-empty connection id.</td>
+</tr>
+<tr>
+<td><code dir="auto">OVOA06</code></td>
+<td>An <code dir="auto">[OAuthProvider]</code> declares no revoke URL, so revoke is local-only.</td>
+<td>Declare a revoke URL to revoke upstream too, or accept local-only.</td>
+</tr>
+<tr>
+<td><code dir="auto">OVST01</code></td>
+<td>A state-transition handler is not static or takes the wrong parameter.</td>
+<td>Make it static with a single <code dir="auto">StateTransition&lt;TFrom, TTo&gt;</code> parameter.</td>
+</tr>
+<tr>
+<td><code dir="auto">OVST02</code></td>
+<td>A state-transition handler does not return the effect type.</td>
+<td>Return <code dir="auto">Eff&lt;TRuntime, Unit&gt;</code>.</td>
+</tr>
+<tr>
+<td><code dir="auto">OVST03</code></td>
+<td>Multiple handlers cover the same transition and all run.</td>
+<td>Remove the duplicate, or split into separate handler classes.</td>
+</tr>
+</tbody>
+</table>
+<div class="sl-heading-wrapper level-h2"><h2 id="identity">Identity</h2><a class="sl-anchor-link" href="#identity"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 1 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 0 0-1.42-1.42m8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 1 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l3.88-3.89a4.49 4.49 0 0 0 0-6.33M8.83 15.17a1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.92-4.92a1 1 0 1 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42"></path></svg></span><span class="sr-only" data-pagefind-ignore>Section titled “Identity”</span></a></div>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Reports</th>
+<th>Fix</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code dir="auto">OVID01</code></td>
+<td>An identity user type has no string <code dir="auto">Email</code> property, so email login fails.</td>
+<td>Add a string <code dir="auto">Email</code> property.</td>
+</tr>
+<tr>
+<td><code dir="auto">OVID02</code></td>
+<td>A <code dir="auto">[ClaimsEnricher]</code> method has an invalid signature.</td>
+<td>Make it static and return <code dir="auto">EnrichedClaims</code> with the expected parameters.</td>
+</tr>
+<tr>
+<td><code dir="auto">OVID04</code></td>
+<td>An identity user type is not a <code dir="auto">[StoredEntity]</code>, so registrations cannot persist.</td>
+<td>Add <code dir="auto">[StoredEntity]</code> to the user type.</td>
+</tr>
+<tr>
+<td><code dir="auto">OVAUTH04</code></td>
+<td>A switch over the Google verification result is not exhaustive and could throw.</td>
+<td>Add the missing arms, or a fail-closed default.</td>
+</tr>
+<tr>
+<td><code dir="auto">OVAUTH05</code></td>
+<td>A credential-failure response carries a detail that leaks which check failed.</td>
+<td>Drop the detail; use the uniform invalid-credentials response.</td>
+</tr>
+<tr>
+<td><code dir="auto">OVAUTH06</code></td>
+<td>A Google success path does not check that the email is verified.</td>
+<td>Gate on <code dir="auto">EmailVerified</code> before issuing tokens.</td>
+</tr>
+<tr>
+<td><code dir="auto">OVAUTH07</code></td>
+<td>A handler maps under the reserved <code dir="auto">/auth/*</code> prefix owned by generated endpoints.</td>
+<td>Move the handler to a different route prefix.</td>
+</tr>
+<tr>
+<td><code dir="auto">OVSEC10</code></td>
+<td>A Google client secret is read without <code dir="auto">Secret</code> wrapping.</td>
+<td>Bind it via <code dir="auto">[ConfigSection]</code> + <code dir="auto">Secret&lt;T&gt;</code>.</td>
+</tr>
+</tbody>
+</table>
+<div class="sl-heading-wrapper level-h2"><h2 id="payments">Payments</h2><a class="sl-anchor-link" href="#payments"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 1 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 0 0-1.42-1.42m8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 1 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l3.88-3.89a4.49 4.49 0 0 0 0-6.33M8.83 15.17a1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.92-4.92a1 1 0 1 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42"></path></svg></span><span class="sr-only" data-pagefind-ignore>Section titled “Payments”</span></a></div>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Reports</th>
+<th>Fix</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code dir="auto">OVPAY01</code></td>
+<td>A Stripe event translator has the wrong shape.</td>
+<td>Make it public static, take one event, return a nullable domain record.</td>
+</tr>
+<tr>
+<td><code dir="auto">OVPAY02</code></td>
+<td>Two translators handle the same Stripe event type in one class.</td>
+<td>Keep one translator per event type.</td>
+</tr>
+<tr>
+<td><code dir="auto">OVPAY03</code></td>
+<td>A Stripe client binds a raw card-data field, breaking PCI scope.</td>
+<td>Use Checkout Sessions or client-side tokenization.</td>
+</tr>
+<tr>
+<td><code dir="auto">OVPAY04</code></td>
+<td>A Stripe webhook endpoint has no signature validator registered.</td>
+<td>Register a validator (HMAC, or the development stub).</td>
+</tr>
+<tr>
+<td><code dir="auto">OVPAY05</code></td>
+<td>A resilient handler retries a Stripe write with no idempotency key.</td>
+<td>Supply an idempotency key to avoid duplicate charges.</td>
+</tr>
+</tbody>
+</table>
+<div class="sl-heading-wrapper level-h2"><h2 id="rest">REST</h2><a class="sl-anchor-link" href="#rest"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 1 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 0 0-1.42-1.42m8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 1 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l3.88-3.89a4.49 4.49 0 0 0 0-6.33M8.83 15.17a1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.92-4.92a1 1 0 1 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42"></path></svg></span><span class="sr-only" data-pagefind-ignore>Section titled “REST”</span></a></div>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Reports</th>
+<th>Fix</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code dir="auto">OVREST01</code></td>
+<td>A <code dir="auto">[RouteBind]</code> token has no matching segment in the route template.</td>
+<td>Add the <code dir="auto">{token}</code> segment to the template.</td>
+</tr>
+<tr>
+<td><code dir="auto">OVREST02</code></td>
+<td>A <code dir="auto">[SystemOnly]</code> handler also carries an HTTP-verb attribute.</td>
+<td>Remove the HTTP verb so the handler stays internal.</td>
+</tr>
+<tr>
+<td><code dir="auto">OVREST03</code></td>
+<td>A webhook handler is missing <code dir="auto">[AllowAnonymous]</code> and/or <code dir="auto">[TenantOptional]</code>.</td>
+<td>Add both attributes.</td>
+</tr>
+<tr>
+<td><code dir="auto">OVREST04</code></td>
+<td>A route template token has no input property to bind it.</td>
+<td>Name a property after it, or add <code dir="auto">[RouteBind("token")]</code>.</td>
+</tr>
+<tr>
+<td><code dir="auto">OVREST05</code></td>
+<td>A webhook secret resolver method has an invalid signature.</td>
+<td>Make it static, take the request context, return the resolution effect.</td>
+</tr>
+<tr>
+<td><code dir="auto">OVREST06</code></td>
+<td>A webhook envelope is reused as a plain dispatch input, skipping signature checks.</td>
+<td>Split the transport envelope from the domain command.</td>
+</tr>
+<tr>
+<td><code dir="auto">OVREST07</code></td>
+<td>An <code dir="auto">[Affordance]</code> sits on a <code dir="auto">[SystemOnly]</code> command, which can never be a user action.</td>
+<td>Remove <code dir="auto">[SystemOnly]</code> or <code dir="auto">[Affordance]</code>.</td>
+</tr>
+<tr>
+<td><code dir="auto">OVREST08</code></td>
+<td>A declared webhook secret resolver was discovered but not wired.</td>
+<td>Resolve the runtime mismatch so it wires.</td>
+</tr>
+<tr>
+<td><code dir="auto">OVREST09</code></td>
+<td>An affordance key or link token does not resolve to an entity property.</td>
+<td>Name public entity properties; ensure the entity has an <code dir="auto">Id</code>.</td>
+</tr>
+<tr>
+<td><code dir="auto">OVREST10</code></td>
+<td>An affordance owner reference names no public entity property.</td>
+<td>Set it to a public property holding the owner’s user id.</td>
+</tr>
+</tbody>
+</table>
+<div class="sl-heading-wrapper level-h2"><h2 id="screens">Screens</h2><a class="sl-anchor-link" href="#screens"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 1 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 0 0-1.42-1.42m8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 1 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l3.88-3.89a4.49 4.49 0 0 0 0-6.33M8.83 15.17a1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.92-4.92a1 1 0 1 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42"></path></svg></span><span class="sr-only" data-pagefind-ignore>Section titled “Screens”</span></a></div>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Reports</th>
+<th>Fix</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code dir="auto">OVSCRN01</code></td>
+<td>A screen’s backing type is not a registered handler input.</td>
+<td>Reference a command or query handler input record.</td>
+</tr>
+<tr>
+<td><code dir="auto">OVSCRN07</code></td>
+<td>A screen’s kind does not match its handler kind.</td>
+<td>Use a query for list/detail screens, a command for create/form.</td>
+</tr>
+<tr>
+<td><code dir="auto">OVSCRN08</code></td>
+<td>Two screens declare the same route.</td>
+<td>Give each screen a distinct route.</td>
+</tr>
+<tr>
+<td><code dir="auto">OVSCRN09</code></td>
+<td>A screen class has no <code dir="auto">Configure</code> method.</td>
+<td>Declare a <code dir="auto">static void Configure(…)</code> method.</td>
+</tr>
+<tr>
+<td><code dir="auto">OVSCRN10</code></td>
+<td>An unsupported construct appears in a screen’s <code dir="auto">Configure</code> body.</td>
+<td>Keep screen configuration declarative — no locals, loops, or calls.</td>
+</tr>
+<tr>
+<td><code dir="auto">OVSCRN11</code></td>
+<td>A field or column selector is not a simple property access.</td>
+<td>Use a <code dir="auto">t =&gt; t.Property</code> selector.</td>
+</tr>
+</tbody>
+</table>
+<div class="sl-heading-wrapper level-h2"><h2 id="server-sent-events">Server-Sent Events</h2><a class="sl-anchor-link" href="#server-sent-events"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 1 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 0 0-1.42-1.42m8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 1 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l3.88-3.89a4.49 4.49 0 0 0 0-6.33M8.83 15.17a1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.92-4.92a1 1 0 1 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42"></path></svg></span><span class="sr-only" data-pagefind-ignore>Section titled “Server-Sent Events”</span></a></div>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Reports</th>
+<th>Fix</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code dir="auto">OVSSE01</code></td>
+<td>An <code dir="auto">[SseApi]</code> route prefix collides with the REST prefix.</td>
+<td>Set a distinct <code dir="auto">[SseApi(RoutePrefix = "…")]</code>.</td>
+</tr>
+<tr>
+<td><code dir="auto">OVSSE02</code></td>
+<td>Two streams declare the same path.</td>
+<td>Give each stream a unique path.</td>
+</tr>
+</tbody>
+</table>
+<div class="sl-heading-wrapper level-h2"><h2 id="slack">Slack</h2><a class="sl-anchor-link" href="#slack"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 1 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 0 0-1.42-1.42m8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 1 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l3.88-3.89a4.49 4.49 0 0 0 0-6.33M8.83 15.17a1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.92-4.92a1 1 0 1 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42"></path></svg></span><span class="sr-only" data-pagefind-ignore>Section titled “Slack”</span></a></div>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Reports</th>
+<th>Fix</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code dir="auto">OVSLK01</code></td>
+<td>A Slack client is declared but the Slack runtime is not referenced, so API errors are not raised.</td>
+<td>Reference <code dir="auto">Oval.Slack</code>.</td>
+</tr>
+</tbody>
+</table>
+<div class="sl-heading-wrapper level-h2"><h2 id="csv">CSV</h2><a class="sl-anchor-link" href="#csv"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 1 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 0 0-1.42-1.42m8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 1 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l3.88-3.89a4.49 4.49 0 0 0 0-6.33M8.83 15.17a1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.92-4.92a1 1 0 1 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42"></path></svg></span><span class="sr-only" data-pagefind-ignore>Section titled “CSV”</span></a></div>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Reports</th>
+<th>Fix</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code dir="auto">OVCSV01</code></td>
+<td>A <code dir="auto">[CsvRecord]</code> type is not partial.</td>
+<td>Declare the type <code dir="auto">partial</code>.</td>
+</tr>
+<tr>
+<td><code dir="auto">OVCSV02</code></td>
+<td>A CSV field attribute sits on a non-<code dir="auto">[CsvRecord]</code> type and is ignored.</td>
+<td>Mark the containing type <code dir="auto">[CsvRecord]</code>.</td>
+</tr>
+<tr>
+<td><code dir="auto">OVCSV03</code></td>
+<td>A CSV field’s type is not string, parseable, or an enum, and has no converter.</td>
+<td>Add <code dir="auto">[CsvConverter(typeof(…))]</code>.</td>
+</tr>
+<tr>
+<td><code dir="auto">OVCSV04</code></td>
+<td>Two fields resolve to the same column name.</td>
+<td>Rename a field, or set distinct <code dir="auto">[CsvField]</code> overrides.</td>
+</tr>
+<tr>
+<td><code dir="auto">OVCSV05</code></td>
+<td>A converter type does not implement the converter contract.</td>
+<td>Reference a type implementing <code dir="auto">ICsvConverter&lt;TField&gt;</code>.</td>
+</tr>
+</tbody>
+</table>
+</div><footer class="sl-flex astro-7bmbw3by"><div class="meta sl-flex astro-7bmbw3by"><a href="https://github.com/OV-AL/oval/edit/main/site/src/content/docs/reference/diagnostics.md" class="sl-flex print:hidden astro-resbwrw6"><svg aria-hidden="true" class="astro-resbwrw6 astro-al3brprd" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.2em;"><path d="M22 7.24a1 1 0 0 0-.29-.71l-4.24-4.24a1 1 0 0 0-1.1-.22 1 1 0 0 0-.32.22l-2.83 2.83L2.29 16.05a1 1 0 0 0-.29.71V21a1 1 0 0 0 1 1h4.24a1 1 0 0 0 .76-.29l10.87-10.93L21.71 8c.1-.1.17-.2.22-.33a1 1 0 0 0 0-.24v-.14l.07-.05ZM6.83 20H4v-2.83l9.93-9.93 2.83 2.83L6.83 20ZM18.17 8.66l-2.83-2.83 1.42-1.41 2.82 2.82-1.41 1.42Z"/></svg>Edit page</a></div><div class="pagination-links print:hidden astro-juhkatpk" dir="ltr"><a href="/reference/cli/screens-sync/" rel="prev" class="astro-juhkatpk"><svg aria-hidden="true" class="astro-juhkatpk astro-al3brprd" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.5rem;"><path d="M17 11H9.41l3.3-3.29a1.004 1.004 0 1 0-1.42-1.42l-5 5a1 1 0 0 0-.21.33 1 1 0 0 0 0 .76 1 1 0 0 0 .21.33l5 5a1.002 1.002 0 0 0 1.639-.325 1 1 0 0 0-.219-1.095L9.41 13H17a1 1 0 0 0 0-2Z"/></svg><span class="astro-juhkatpk">Previous<br class="astro-juhkatpk"><span class="link-title astro-juhkatpk">oval screens sync</span></span></a></div></footer></div></div></main></div></div></div></div></body></html>
