@@ -442,6 +442,11 @@ them, with a one-line description and fix for each.</p>
 <td>Add <code dir="auto">[StoredEntity]</code> to the user type.</td>
 </tr>
 <tr>
+<td><code dir="auto">OVID06</code></td>
+<td>An identity user type is <code dir="auto">[TenantScoped]</code>, but login lookups run before any tenant scope exists, so sign-in fails at runtime.</td>
+<td>Keep the user global; model per-tenant access as separate <code dir="auto">[TenantScoped]</code> membership entities.</td>
+</tr>
+<tr>
 <td><code dir="auto">OVAUTH04</code></td>
 <td>A switch over the Google verification result is not exhaustive and could throw.</td>
 <td>Add the missing arms, or a fail-closed default.</td>
