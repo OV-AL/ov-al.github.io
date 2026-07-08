@@ -447,6 +447,11 @@ them, with a one-line description and fix for each.</p>
 <td>Keep the user global; model per-tenant access as separate <code dir="auto">[TenantScoped]</code> membership entities.</td>
 </tr>
 <tr>
+<td><code dir="auto">OVID07</code></td>
+<td>A DataStore-backed identity user’s <code dir="auto">Email</code> has no <code dir="auto">[Unique]</code>, so concurrent same-email registrations can both succeed.</td>
+<td>Add <code dir="auto">[Unique]</code> to the <code dir="auto">Email</code> property.</td>
+</tr>
+<tr>
 <td><code dir="auto">OVAUTH04</code></td>
 <td>A switch over the Google verification result is not exhaustive and could throw.</td>
 <td>Add the missing arms, or a fail-closed default.</td>
